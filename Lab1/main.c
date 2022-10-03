@@ -3,28 +3,32 @@
 
 #define MATRIX_SIZE 16
 
-int getDecimalNumberLength(int number)
+int get_decimal_number_length(int number)
 {
-    int digitsAmmount = 0;
+    int digits_ammount = 0;
     while(number > 0)
     {
         number /= 10;
-        digitsAmmount++;
+        digits_ammount++;
     }
-    return digitsAmmount;
+    return digits_ammount;
 }
 
-void printCell(int number, int cell_size)
+void print_cell(int number, int cell_size)
 {
-    int number_size = getDecimalNumberLength(number);
-    if(number_size < (cell_size - 2))
+    int number_size = get_decimal_number_length(number);
+    int remain_size = cell_size - number_size - 2;
+    while(remain_size > 0)
+    {
         printf(" ");
+        remain_size--;
+    }
     printf(" %d ", number);
 }
 
-void printLine(int lineLength)
+void print_line(int line_length)
 {
-    for(int i = 0; i < (lineLength + 2); i++)
+    for(int i = 0; i < (line_length + 2); i++)
         printf("-");
     printf("\n");
 }
@@ -32,36 +36,38 @@ void printLine(int lineLength)
 int main()
 {
     //Task 1
-    //Print square "matrix"
-    //Arrays usage is not allowded
+    //Print square matrix
+    //Arrays are not allowed
     //Pseudo - graphic surrounding is optional
 
-    int cell_size = getDecimalNumberLength(MATRIX_SIZE) + 2; //Cell size with 2 spaces/ Example | 1  | 16 |
-    int lineLength = MATRIX_SIZE * (cell_size + 1);
+    int cell_size = get_decimal_number_length(MATRIX_SIZE) + 2; //Cell size with 2 spaces/ Example | 1  | 16 |
+    int line_length = MATRIX_SIZE * (cell_size + 1);
 
-    printLine(lineLength);
+    print_line(line_length);
 
     for(int i = 1; i <= MATRIX_SIZE; i++)
     {
         for(int j = 1; j <= MATRIX_SIZE; j++)
         {
             printf("|");
-            printCell(j, cell_size);
+            print_cell(j, cell_size);
         }
         printf("|\n");
-        printLine(lineLength);
+        print_line(line_length);
     }
 
     //Task 2
     //You have some money as integer. Task is give exchange with minimum amount of coins of value 3 and 5.
     //Consider amount of coins for exchange as limitless.
 
+
+
     //Task 3
     //(Was not represented on lab but is useful for tasks representation)
-    //Make console choose for tasks on "main screen" and seperate "screens" for each task
+    //Make console choose for tasks on "main screen" and separate "screens" for each task
     //Return to main screen is optional
     //Exit program from main screen is optional
-    //Making this system avalable for further usage is highly recomended
+    //Making this system available for further usage is highly recommended
 
     return 0;
 }
