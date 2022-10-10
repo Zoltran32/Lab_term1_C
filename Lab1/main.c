@@ -59,8 +59,13 @@ int main()
     //Task 2
     //You have some money as integer. Task is give exchange with minimum amount of coins of value 3 and 5.
     //Consider amount of coins for exchange as limitless.
-
-
+    int money_count = 100;
+    money_count %= 5;
+    money_count %= 3;
+    if(money_count == 0)
+        printf("Exchange is possible.\n");
+    else
+        printf("Exchange is not possible.\n");
 
     //Task 3
     //(Was not represented on lab but is useful for tasks representation)
